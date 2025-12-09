@@ -1,0 +1,96 @@
+Better solution
+
+class Solution {
+  public:
+    int getSecondLargest(vector<int> &arr) {
+        
+        
+        // code here
+      int n = arr.size();
+      bool found = false;
+      if(n<2) return -1;
+      
+      int largest = arr[0];
+      for(int i=1;i<n;i++)
+      {
+          if(arr[i]>largest)
+          {
+              largest = arr[i];
+          }
+      }
+      
+      
+      int second = INT_MIN;
+      for(int i=0;i<n;i++)
+      {
+          if(arr[i]>second && arr[i]<largest)
+          {
+              second = arr[i];
+              found = true;
+          }
+          
+          
+      }
+      if(!found) return -1;
+      return second;
+      
+      
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+optimul solution
+
+
+
+
+
+class Solution {
+  public:
+    int getSecondLargest(vector<int> &arr) {
+        
+        
+        // code here
+       int n = arr.size();
+       if(n<2) return -1;
+       
+       int largest = arr[0];
+       int slar = INT_MIN;
+       
+      for (int i=1;i<n;i++)
+      {
+          if(arr[i]>largest)
+          {
+              slar = largest;
+              largest = arr[i];
+
+          }
+          else if(arr[i]<largest && arr[i]>slar )
+          {
+              slar = arr[i];
+          }
+      }
+      return slar;
+    }
+};
